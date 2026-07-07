@@ -1,0 +1,146 @@
+class Main{
+    public static void main(String[] args){
+        //1.chartAt()
+        // String str = "mudigondavenkatasaicharan";
+        // char result = str.charAt(3);
+        // System.out.print(result);
+        
+        //2.compareTo()
+        // String str1 = "banana";
+        // String str2 = "banana";
+        // int result = str1.compareTo(str2);
+        // System.out.print(result);
+        
+        //3.compareToIgnoreCase()
+        // String str1 = "APPLE";
+        // String str2 = "apple";
+        // int result = str1.compareToIgnoreCase(str2);
+        // System.out.print(result);
+        
+        //4.concat()
+        // String str1 = "welcome to ";
+        // String str2 = "home page";
+        // String result = str1.concat(str2);
+        // System.out.print(result);
+        
+        //5.contains()
+        // String str = "leonardo decaprio";
+        // boolean result = str.contains("leo");
+        // System.out.print(result);
+
+        // 6. contentEquals()
+        // String str6 = "Hello";
+        // StringBuilder sb = new StringBuilder("Hello");
+        // boolean res6 = str6.contentEquals(sb);
+        // System.out.println("contentEquals: " + res6); 
+
+        //  7. copyValueOf()
+        // char[] data = {'J', 'a', 'v', 'a'};
+        // String res7 = String.copyValueOf(data);
+        // System.out.println("copyValueOf: " + res7); 
+
+        // 8. endsWith()
+        // String str8 = "compiled.java";
+        // boolean res8 = str8.endsWith(".java");
+        // System.out.println("endsWith: " + res8); 
+
+        // 9. equals()
+        // String str9a = "Hello";
+        // String str9b = "hello";
+        // boolean res9 = str9a.equals(str9b);
+        // System.out.println("equals: " + res9); 
+
+        // 10. equalsIgnoreCase()
+        // boolean res10 = str9a.equalsIgnoreCase(str9b);
+        // System.out.println("equalsIgnoreCase: " + res10); 
+
+        //11. indexOf()
+        // String str11 = "Hello World";
+        // int res11 = str11.indexOf("o");
+        // System.out.println("indexOf('o'): " + res11); 
+
+        // 12. isEmpty()
+        // String str12 = "";
+        // System.out.println("isEmpty: " + str12.isEmpty());
+
+        // 13. join()
+        // String res13 = String.join("-", "2026", "07", "03");
+        // System.out.println("join: " + res13);
+
+        //14. lastIndexOf()
+        // int res14 = str11.lastIndexOf("o");
+        // System.out.println("lastIndexOf('o'): " + res14); 
+
+        // 15. matches()
+        // String str15 = "12345";
+        // boolean res15 = str15.matches("\\d+");
+        // System.out.println("matches (digits only): " + res15); 
+
+        // 16. replace()
+        // String str16 = "Java Cat";
+        // String res16 = str16.replace('a', 'o');
+        // System.out.println("replace: " + res16); 
+
+        //17. replaceAll()
+        // String str17 = "Hello 123 World";
+        // String res17 = str17.replaceAll("\\d", "*");
+        // System.out.println("replaceAll: " + res17);
+
+        //18. replaceFirst()
+        // String str18 = "apple apple";
+        // String res18 = str18.replaceFirst("apple", "orange");
+        // System.out.println("replaceFirst: " + res18);
+
+        // 19. split()
+        // String str19 = "Apple,Banana,Orange";
+        // String[] fruits = str19.split(",");
+        // System.out.print("split: ");
+        // for (String fruit : fruits) {
+        //     System.out.print("[" + fruit + "] ");
+        // }
+        // System.out.println();
+
+        // 20. startsWith()
+        // String str20 = "Java Programming";
+        // System.out.println("startsWith: " + str20.startsWith("Java"));
+
+        //21. subSequence()
+        // String str21 = "Hello World";
+        // CharSequence res21 = str21.subSequence(0, 5);
+        // System.out.println("subSequence (0 to 5): " + res21); 
+
+        //22. substring()
+        // String res22 = str21.substring(6, 11);
+        // System.out.println("substring (6 to 11): " + res22);
+
+        //23. toCharArray()
+        // String str23 = "Java";
+        // char[] array = str23.toCharArray();
+        // System.out.print("toCharArray: ");
+        // for (char c : array) {
+        //     System.out.print(c + " ");
+        // }
+        // System.out.println();
+
+        // 25. toLowerCase()
+        // String str25 = "JAVA";
+        // System.out.println("toLowerCase: " + str25.toLowerCase());
+
+        // 26. toUpperCase()
+        // String str26 = "java";
+        // System.out.println("toUpperCase: " + str26.toUpperCase());
+
+        // 27. toString()
+        // String str27 = "Hello";
+        // System.out.println("toString: " + str27.toString()); 
+
+        //28. trim()
+        // String str28 = "   Hello World!   ";
+        // System.out.println("trim: '" + str28.trim() + "'"); 
+
+        // 29. valueOf()
+        // int number = 100;
+        // String res29 = String.valueOf(number);
+        // System.out.println("valueOf (int to String): " + res29);
+    }
+}

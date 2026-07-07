@@ -1,0 +1,16 @@
+class Car{
+    int plateNum;
+    String carName;
+    
+    public Car(int platenum, String carName){
+        this.plateNum = 9999;
+        this.carName = carName;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Car s1 = new Car(001,"Porsche 911");
+        System.out.println(s1.plateNum);
+        System.out.println(s1.carName);
+    }
+}
