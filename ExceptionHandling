@@ -1,0 +1,29 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        try {
+            // Attempt to read two 32-bit signed integers
+            int x = scanner.nextInt();
+            int y = scanner.nextInt();
+            
+            // Attempt the division
+            int result = x / y;
+            System.out.println(result);
+            
+        } catch (InputMismatchException e) {
+            // Triggers if inputs are not integers (e.g., "Hello" or 23.323)
+            System.out.println("java.util.InputMismatchException");
+            
+        } catch (ArithmeticException e) {
+            // Triggers if y is 0
+            System.out.println(e);
+        } finally {
+            scanner.close();
+        }
+    }
+}
