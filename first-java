@@ -1,0 +1,142 @@
+1.Write a program to print whether a number is even or odd, also take input from the user.
+import java.util.Scanner;
+
+public class EvenOdd {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter a number: ");
+        int num = scanner.nextInt();
+        
+        if (num % 2 == 0) {
+            System.out.println(num + " is an even number.");
+        } else {
+            System.out.println(num + " is an odd number.");
+        }
+        
+        scanner.close();
+    }
+}
+OUTPUT:
+Enter a number: 7
+7 is an odd number.
+
+
+2.Take name as input and print a greeting message for that particular name.
+import java.util.Scanner;
+
+public class Greeting {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter your name: ");
+        String name = scanner.nextLine();
+        
+        System.out.println("Hello, " + name + "! Hope you have a fantastic day.");
+        
+        scanner.close();
+    }
+}
+OUTPUT:Enter your name: prakash
+Hello, Prakash! Hope you have a fantastic day.
+
+3.Write a program to input principal, time, and rate (P, T, R) from the user and find Simple Interest.
+
+import java.util.Scanner;
+
+public class SimpleInterest {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter the principal amount: ");
+        double p = scanner.nextDouble();
+        
+        System.out.print("Enter the time in years: ");
+        double t = scanner.nextDouble();
+        
+        System.out.print("Enter the rate of interest: ");
+        double r = scanner.nextDouble();
+        
+        // Simple Interest formula: (P * T * R) / 100
+        double si = (p * t * r) / 100;
+        
+        System.out.println("The Simple Interest is: " + si);
+        
+        scanner.close();
+    }
+}
+Enter the principal amount: 5000
+Enter the time in years: 3
+Enter the rate of interest: 4.5
+The Simple Interest is: 675.0
+
+4.Take in two numbers and an operator (+, -, *, /) and calculate the value. (Use if conditions)
+import java.util.Scanner;
+
+public class Calculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter the first number: ");
+        double num1 = scanner.nextDouble();
+        
+        System.out.print("Enter an operator (+, -, *, /): ");
+        char operator = scanner.next().charAt(0);
+        
+        System.out.print("Enter the second number: ");
+        double num2 = scanner.nextDouble();
+        
+        if (operator == '+') {
+            System.out.println("Result: " + (num1 + num2));
+        } else if (operator == '-') {
+            System.out.println("Result: " + (num1 - num2));
+        } else if (operator == '*') {
+            System.out.println("Result: " + (num1 * num2));
+        } else if (operator == '/') {
+            if (num2 != 0) {
+                System.out.println("Result: " + (num1 / num2));
+            } else {
+                System.out.println("Error! Division by zero is not allowed.");
+            }
+        } else {
+            System.out.println("Invalid operator selected.");
+        }
+        
+        scanner.close();
+    }
+}
+
+OUTPUT:
+Enter the first number: 15
+Enter an operator (+, -, *, /): *
+Enter the second number: 4
+Result: 60.0
+
+5.Take 2 numbers as input and print the largest number.
+import java.util.Scanner;
+
+public class LargestNumber {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter the first number: ");
+        double num1 = scanner.nextDouble();
+        
+        System.out.print("Enter the second number: ");
+        double num2 = scanner.nextDouble();
+        
+        if (num1 > num2) {
+            System.out.println("The largest number is " + num1);
+        } else if (num2 > num1) {
+            System.out.println("The largest number is " + num2);
+        } else {
+            System.out.println("Both numbers are exactly equal.");
+        }
+        
+        scanner.close();
+    }
+}
+
+OUTPUT:Enter the first number: 89
+Enter the second number: 124
+The largest number is 124.0
