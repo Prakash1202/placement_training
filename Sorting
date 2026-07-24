@@ -1,0 +1,478 @@
+1. Merge Sorted Array
+
+import java.util.Arrays;
+
+public class MergeSortedArray {
+    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+        int p1 = m - 1;
+        int p2 = n - 1;
+        int p = m + n - 1;
+
+        while (p1 >= 0 && p2 >= 0) {
+            if (nums1[p1] > nums2[p2]) {
+                nums1[p] = nums1[p1];
+                p1--;
+            } else {
+                nums1[p] = nums2[p2];
+                p2--;
+            }
+            p--;
+        }
+
+        while (p2 >= 0) {
+            nums1[p] = nums2[p2];
+            p2--;
+            p--;
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 2, 3, 0, 0, 0};
+        int[] nums2 = {2, 5, 6};
+        merge(nums1, 3, nums2, 3);
+        System.out.println(Arrays.toString(nums1));
+    }
+}
+Output
+
+[1, 2, 2, 3, 5, 6]
+
+
+2. Majority Element
+
+public class MajorityElement {
+    public static int majorityElement(int[] nums) {
+        int count = 0;
+        Integer candidate = null;
+
+        for (int num : nums) {
+            if (count == 0) {
+                candidate = num;
+            }
+            count += (num == candidate) ? 1 : -1;
+        }
+
+        return candidate;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {2, 2, 1, 1, 1, 2, 2};
+        System.out.println(majorityElement(nums));
+    }
+}
+Output:
+2
+
+
+3. Contains Duplicate
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class ContainsDuplicate {
+    public static boolean containsDuplicate(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            if (!set.add(num)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 3, 1};
+        System.out.println(containsDuplicate(nums));
+    }
+}
+Output:
+true
+
+
+4. Missing Number
+
+public class MissingNumber {
+    public static int missingNumber(int[] nums) {
+        int n = nums.length;
+        int expectedSum = n * (n + 1) / 2;
+        int actualSum = 0;
+        for (int num : nums) {
+            actualSum += num;
+        }
+        return expectedSum - actualSum;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {3, 0, 1};
+        System.out.println(missingNumber(nums));
+    }
+}
+Output
+2
+
+
+5. Intersection of Two Arrays
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+public class IntersectionTwoArrays {
+    public static int[] intersection(int[] nums1, int[] nums2) {
+        Set<Integer> set1 = new HashSet<>();
+        for (int num : nums1) {
+            set1.add(num);
+        }
+
+        Set<Integer> intersection = new HashSet<>();
+        for (int num : nums2) {
+            if (set1.contains(num)) {
+                intersection.add(num);
+            }
+        }
+
+        int[] result = new int[intersection.size()];
+        int i = 0;
+        for (int num : intersection) {
+            result[i++] = num;
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 2, 2, 1};
+        int[] nums2 = {2, 2};
+        System.out.println(Arrays.toString(intersection(nums1, nums2)));
+    }
+}
+Output
+[2]
+
+
+6. Intersection of Two Arrays II
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+public class IntersectionTwoArraysII {
+    public static int[] intersect(int[] nums1, int[] nums2) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int num : nums1) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+
+        int[] temp = new int[Math.min(nums1.length, nums2.length)];
+        int k = 0;
+
+        for (int num : nums2) {
+            if (map.getOrDefault(num, 0) > 0) {
+                temp[k++] = num;
+                map.put(num, map.get(num) - 1);
+            }
+        }
+
+        return Arrays.copyOf(temp, k);
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 2, 2, 1};
+        int[] nums2 = {2, 2};
+        System.out.println(Arrays.toString(intersect(nums1, nums2)));
+    }
+}
+Output
+[2, 2]
+
+
+7. Third Maximum Number
+
+public class ThirdMaximumNumber {
+    public static int thirdMax(int[] nums) {
+        Long max1 = null, max2 = null, max3 = null;
+
+        for (Integer num : nums) {
+            if (num.equals(max1) || num.equals(max2) || num.equals(max3)) {
+                continue;
+            }
+            if (max1 == null || num > max1) {
+                max3 = max2;
+                max2 = max1;
+                max1 = (long) num;
+            } else if (max2 == null || num > max2) {
+                max3 = max2;
+                max2 = (long) num;
+            } else if (max3 == null || num > max3) {
+                max3 = (long) num;
+            }
+        }
+
+        return max3 == null ? max1.intValue() : max3.intValue();
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {3, 2, 1};
+        System.out.println(thirdMax(nums));
+    }
+}
+Output
+1
+
+
+8. Assign Cookies
+
+import java.util.Arrays;
+
+public class AssignCookies {
+    public static int findContentChildren(int[] g, int[] s) {
+        Arrays.sort(g);
+        Arrays.sort(s);
+        int child = 0;
+        int cookie = 0;
+
+        while (child < g.length && cookie < s.length) {
+            if (s[cookie] >= g[child]) {
+                child++;
+            }
+            cookie++;
+        }
+
+        return child;
+    }
+
+    public static void main(String[] args) {
+        int[] g = {1, 2, 3};
+        int[] s = {1, 1};
+        System.out.println(findContentChildren(g, s));
+    }
+}
+Output
+1
+
+
+9. Array Partition I
+
+import java.util.Arrays;
+
+public class ArrayPartitionI {
+    public static int arrayPairSum(int[] nums) {
+        Arrays.sort(nums);
+        int sum = 0;
+        for (int i = 0; i < nums.length; i += 2) {
+            sum += nums[i];
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 4, 3, 2};
+        System.out.println(arrayPairSum(nums));
+    }
+}
+Output
+4
+
+
+10. Maximum Product of Three Numbers
+
+import java.util.Arrays;
+
+public class MaximumProductThreeNumbers {
+    public static int maximumProduct(int[] nums) {
+        Arrays.sort(nums);
+        int n = nums.length;
+        int option1 = nums[n - 1] * nums[n - 2] * nums[n - 3];
+        int option2 = nums[0] * nums[1] * nums[n - 1];
+        return Math.max(option1, option2);
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 3, 4};
+        System.out.println(maximumProduct(nums));
+    }
+}
+Output
+24
+
+
+11. Sort Array By Parity
+
+import java.util.Arrays;
+
+public class SortArrayByParity {
+    public static int[] sortArrayByParity(int[] nums) {
+        int left = 0, right = nums.length - 1;
+
+        while (left < right) {
+            if (nums[left] % 2 > nums[right] % 2) {
+                int temp = nums[left];
+                nums[left] = nums[right];
+                nums[right] = temp;
+            }
+            if (nums[left] % 2 == 0) left++;
+            if (nums[right] % 2 == 1) right--;
+        }
+
+        return nums;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {3, 1, 2, 4};
+        System.out.println(Arrays.toString(sortArrayByParity(nums)));
+    }
+}
+Output
+[4, 2, 1, 3]
+
+
+12. Sort Array By Parity II
+
+import java.util.Arrays;
+
+public class SortArrayByParityII {
+    public static int[] sortArrayByParityII(int[] nums) {
+        int even = 0;
+        int odd = 1;
+        int n = nums.length;
+
+        while (even < n && odd < n) {
+            while (even < n && nums[even] % 2 == 0) {
+                even += 2;
+            }
+            while (odd < n && nums[odd] % 2 == 1) {
+                odd += 2;
+            }
+            if (even < n && odd < n) {
+                int temp = nums[even];
+                nums[even] = nums[odd];
+                nums[odd] = temp;
+            }
+        }
+
+        return nums;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {4, 2, 5, 7};
+        System.out.println(Arrays.toString(sortArrayByParityII(nums)));
+    }
+}
+Output
+[4, 5, 2, 7]
+
+
+13. Largest Perimeter Triangle
+
+import java.util.Arrays;
+
+public class LargestPerimeterTriangle {
+    public static int largestPerimeter(int[] nums) {
+        Arrays.sort(nums);
+        for (int i = nums.length - 3; i >= 0; i--) {
+            if (nums[i] + nums[i + 1] > nums[i + 2]) {
+                return nums[i] + nums[i + 1] + nums[i + 2];
+            }
+        }
+        return 0;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {2, 1, 2};
+        System.out.println(largestPerimeter(nums));
+    }
+}
+Output:
+5
+
+
+14. Squares of a Sorted Array
+
+import java.util.Arrays;
+
+public class SquaresSortedArray {
+    public static int[] sortedSquares(int[] nums) {
+        int n = nums.length;
+        int[] result = new int[n];
+        int left = 0, right = n - 1;
+
+        for (int i = n - 1; i >= 0; i--) {
+            if (Math.abs(nums[left]) > Math.abs(nums[right])) {
+                result[i] = nums[left] * nums[left];
+                left++;
+            } else {
+                result[i] = nums[right] * nums[right];
+                right--;
+            }
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {-4, -1, 0, 3, 10};
+        System.out.println(Arrays.toString(sortedSquares(nums)));
+    }
+}
+Output
+[0, 1, 9, 16, 100]
+
+
+15. Matrix Cells in Distance Order
+
+import java.util.Arrays;
+
+public class MatrixCellsDistanceOrder {
+    public static int[][] allCellsDistOrder(int rows, int cols, int rCenter, int cCenter) {
+        int[][] result = new int[rows * cols][2];
+        int idx = 0;
+
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                result[idx++] = new int[]{r, c};
+            }
+        }
+
+        Arrays.sort(result, (a, b) -> {
+            int distA = Math.abs(a[0] - rCenter) + Math.abs(a[1] - cCenter);
+            int distB = Math.abs(b[0] - rCenter) + Math.abs(b[1] - cCenter);
+            return Integer.compare(distA, distB);
+        });
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int[][] res = allCellsDistOrder(1, 2, 0, 0);
+        System.out.println(Arrays.deepToString(res));
+    }
+}
+Output
+[[0, 0], [0, 1]]
+
+
+16. Height Checker
+
+import java.util.Arrays;
+
+public class HeightChecker {
+    public static int heightChecker(int[] heights) {
+        int[] expected = heights.clone();
+        Arrays.sort(expected);
+        int count = 0;
+
+        for (int i = 0; i < heights.length; i++) {
+            if (heights[i] != expected[i]) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        int[] heights = {1, 1, 4, 2, 1, 3};
+        System.out.println(heightChecker(heights));
+    }
+}
+Output:
+3
