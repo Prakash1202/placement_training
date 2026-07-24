@@ -1,0 +1,80 @@
+1.Input a year and find whether it is a leap year or not.
+java
+import java.util.Scanner;
+
+public class LeapYear {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a year: ");
+        int year = scanner.nextInt();
+
+        // A year is a leap year if divisible by 4, except for end-of-century years which must be divisible by 400
+        if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+            System.out.println(year + " is a leap year.");
+        } else {
+            System.out.println(year + " is not a leap year.");
+        }
+        
+        scanner.close();
+    }
+}
+OUTPUT : Enter a year: 2006
+2006 is not a leap year.
+
+
+2.Take two numbers and print the sum of both.
+java
+import java.util.Scanner;
+
+public class SumTwoNumbers {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter first number: ");
+        int num1 = scanner.nextInt();
+
+        System.out.print("Enter second number: ");
+        int num2 = scanner.nextInt();
+
+        int sum = num1 + num2;
+        System.out.println("The sum is: " + sum);
+
+        scanner.close();
+    }
+}
+
+OUTPUT:Enter first number: 2
+Enter second number: 6
+The sum is: 8
+
+3.Take a number as input and print the multiplication table for it.
+java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int num = scanner.nextInt();
+
+        System.out.println("Multiplication Table for " + num + ":");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+
+        scanner.close();
+    }
+
+OUTPUT: Enter a number: 29
+Multiplication Table for 29:
+29 x 1 = 29
+29 x 2 = 58
+29 x 3 = 87
+29 x 4 = 116
+29 x 5 = 145
+29 x 6 = 174
+29 x 7 = 203
+29 x 8 = 232
+29 x 9 = 261
+29 x 10 = 290
