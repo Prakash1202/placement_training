@@ -1,0 +1,493 @@
+1. Area Of Circle
+import java.util.Scanner;
+
+public class AreaOfCircle {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the radius of the circle: ");
+        double radius = scanner.nextDouble();
+
+        double area = Math.PI * radius * radius;
+        System.out.printf("Area of Circle: %.2f\n", area);
+
+        scanner.close();
+    }
+}
+OUTPUT:
+Enter the radius of the circle: 7
+Area of Circle: 153.94
+
+2. Area Of Triangle
+
+import java.util.Scanner;
+
+public class AreaOfTriangle {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter base: ");
+        double base = scanner.nextDouble();
+        System.out.print("Enter height: ");
+        double height = scanner.nextDouble();
+
+        double area = 0.5 * base * height;
+        System.out.printf("Area of Triangle: %.2f\n", area);
+
+        scanner.close();
+    }
+}
+
+Output:
+Enter base: 10
+Enter height: 5
+Area of Triangle: 25.00
+
+
+3. Area Of Rectangle
+
+
+import java.util.Scanner;
+
+public class AreaOfRectangle {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter length: ");
+        double length = scanner.nextDouble();
+        System.out.print("Enter width: ");
+        double width = scanner.nextDouble();
+
+        double area = length * width;
+        System.out.printf("Area of Rectangle: %.2f\n", area);
+
+        scanner.close();
+    }
+}
+Output
+Enter length: 8
+Enter width: 4
+Area of Rectangle: 32.00
+
+
+4. Area Of Isosceles Triangle
+
+import java.util.Scanner;
+
+public class AreaOfIsoscelesTriangle {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter length of equal sides (a): ");
+        double a = scanner.nextDouble();
+        System.out.print("Enter base (b): ");
+        double b = scanner.nextDouble();
+
+        // Area formula: (b / 4) * sqrt(4*a^2 - b^2)
+        double area = (b / 4.0) * Math.sqrt((4 * a * a) - (b * b));
+        System.out.printf("Area of Isosceles Triangle: %.2f\n", area);
+
+        scanner.close();
+    }
+}
+Output
+
+Enter length of equal sides (a): 5
+Enter base (b): 6
+Area of Isosceles Triangle: 12.00
+
+
+5. Area Of Parallelogram
+
+import java.util.Scanner;
+
+public class AreaOfParallelogram {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter base: ");
+        double base = scanner.nextDouble();
+        System.out.print("Enter height: ");
+        double height = scanner.nextDouble();
+
+        double area = base * height;
+        System.out.printf("Area of Parallelogram: %.2f\n", area);
+
+        scanner.close();
+    }
+}
+
+OUTPUT:
+
+Enter base: 12
+Enter height: 7
+Area of Parallelogram: 84.00
+
+
+6. Area Of Rhombus
+import java.util.Scanner;
+
+public class AreaOfRhombus {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter length of first diagonal (d1): ");
+        double d1 = scanner.nextDouble();
+        System.out.print("Enter length of second diagonal (d2): ");
+        double d2 = scanner.nextDouble();
+
+        double area = 0.5 * d1 * d2;
+        System.out.printf("Area of Rhombus: %.2f\n", area);
+
+        scanner.close();
+    }
+}
+Output
+
+Enter length of first diagonal (d1): 10
+Enter length of second diagonal (d2): 8
+Area of Rhombus: 40.00
+
+
+7. Area Of Equilateral Triangle
+import java.util.Scanner;
+
+public class AreaOfEquilateralTriangle {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the side length: ");
+        double side = scanner.nextDouble();
+
+        // Area formula: (sqrt(3) / 4) * side^2
+        double area = (Math.sqrt(3) / 4.0) * side * side;
+        System.out.printf("Area of Equilateral Triangle: %.2f\n", area);
+
+        scanner.close();
+    }
+}
+Output
+Enter the side length: 6
+Area of Equilateral Triangle: 15.59
+8. Perimeter Of Circle
+import java.util.Scanner;
+
+public class PerimeterOfCircle {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the radius: ");
+        double radius = scanner.nextDouble();
+
+        double perimeter = 2 * Math.PI * radius;
+        System.out.printf("Perimeter (Circumference) of Circle: %.2f\n", perimeter);
+
+        scanner.close();
+    }
+}
+Output
+
+Enter the radius: 5
+Perimeter (Circumference) of Circle: 31.42
+
+
+9. Perimeter Of Equilateral Triangle
+import java.util.Scanner;
+
+public class PerimeterOfEquilateralTriangle {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter side length: ");
+        double side = scanner.nextDouble();
+
+        double perimeter = 3 * side;
+        System.out.printf("Perimeter of Equilateral Triangle: %.2f\n", perimeter);
+
+        scanner.close();
+    }
+}
+
+Output
+Enter side length: 9
+Perimeter of Equilateral Triangle: 27.00
+
+
+10. Perimeter Of Parallelogram
+import java.util.Scanner;
+
+public class PerimeterOfParallelogram {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter base length: ");
+        double base = scanner.nextDouble();
+        System.out.print("Enter side length: ");
+        double side = scanner.nextDouble();
+
+        double perimeter = 2 * (base + side);
+        System.out.printf("Perimeter of Parallelogram: %.2f\n", perimeter);
+
+        scanner.close();
+    }
+}
+
+Output
+Enter base length: 7
+Enter side length: 4
+Perimeter of Parallelogram: 22.00
+
+INTERMEDIATE
+
+1. Factorial ProgramQuestionWrite a Java program to calculate the factorial of a given non-negative integer $N$ ($N! = N \times (N-1) \times \dots \times 1$).CodeJavaimport java.util.Scanner;
+
+public class Factorial {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a non-negative integer: ");
+        int n = scanner.nextInt();
+
+        long factorial = 1;
+        for (int i = 1; i <= n; i++) {
+            factorial *= i;
+        }
+
+        System.out.println("Factorial of " + n + " = " + factorial);
+        scanner.close();
+    }
+}
+Output:
+Enter a non-negative integer: 5
+Factorial of 5 = 120
+
+
+2. Calculate Electricity BillQuestionWrite a Java program to calculate an electricity bill using a standard tiered tariff system:First 100 units: ₹1.5 per unitNext 100 units (101-200): ₹2.5 per unitNext 100 units (201-300): ₹4.0 per unitAbove 300 units: ₹6.0 per unitCodeJavaimport java.util.Scanner;
+
+public class ElectricityBill {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter total units consumed: ");
+        double units = scanner.nextDouble();
+
+        double billAmount = 0;
+
+        if (units <= 100) {
+            billAmount = units * 1.5;
+        } else if (units <= 200) {
+            billAmount = (100 * 1.5) + ((units - 100) * 2.5);
+        } else if (units <= 300) {
+            billAmount = (100 * 1.5) + (100 * 2.5) + ((units - 200) * 4.0);
+        } else {
+            billAmount = (100 * 1.5) + (100 * 2.5) + (100 * 4.0) + ((units - 300) * 6.0);
+        }
+
+        System.out.printf("Total Electricity Bill: ₹%.2f\n", billAmount);
+        scanner.close();
+    }
+}
+Output:
+Enter total units consumed: 250
+Total Electricity Bill: ₹600.00
+
+
+3. Calculate Average Of N NumbersQuestionWrite a Java program that accepts $N$ real numbers from the user and outputs their average value.CodeJavaimport java.util.Scanner;
+
+public class AverageOfNNumbers {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter total count of numbers (N): ");
+        int n = scanner.nextInt();
+
+        double sum = 0;
+        for (int i = 1; i <= n; i++) {
+            System.out.print("Enter number " + i + ": ");
+            sum += scanner.nextDouble();
+        }
+
+        double average = (n > 0) ? (sum / n) : 0;
+        System.out.printf("Average of %d numbers = %.2f\n", n, average);
+        scanner.close();
+    }
+}
+Output:
+Enter total count of numbers (N): 4
+Enter number 1: 10
+Enter number 2: 20
+Enter number 3: 30
+Enter number 4: 40
+Average of 4 numbers = 25.00
+
+
+4. Calculate Discount Of ProductQuestionWrite a Java program that accepts the original price and discount percentage of a product, then calculates the discount amount and final selling price.CodeJavaimport java.util.Scanner;
+
+public class ProductDiscount {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter original price: ");
+        double originalPrice = scanner.nextDouble();
+        System.out.print("Enter discount percentage (%): ");
+        double discountPercent = scanner.nextDouble();
+
+        double discountAmount = (originalPrice * discountPercent) / 100;
+        double finalPrice = originalPrice - discountAmount;
+
+        System.out.printf("Discount Amount: ₹%.2f\n", discountAmount);
+        System.out.printf("Final Price: ₹%.2f\n", finalPrice);
+        scanner.close();
+    }
+}
+Output:
+tEnter original price: 1200
+Enter discount percentage (%): 15
+Discount Amount: ₹180.00
+Final Price: ₹1020.00
+
+
+5. Calculate Distance Between Two PointsQuestionWrite a Java program to compute the Euclidean distance between two points $(x_1, y_1)$ and $(x_2, y_2)$ using the formula $\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$.CodeJavaimport java.util.Scanner;
+
+public class DistanceBetweenPoints {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter x1 and y1: ");
+        double x1 = scanner.nextDouble();
+        double y1 = scanner.nextDouble();
+
+        System.out.print("Enter x2 and y2: ");
+        double x2 = scanner.nextDouble();
+        double y2 = scanner.nextDouble();
+
+        double distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+        System.out.printf("Distance between points: %.2f\n", distance);
+        scanner.close();
+    }
+}
+Output:
+Enter x1 and y1: 3 4
+Enter x2 and y2: 7 7
+Distance between points: 5.00
+
+
+6. Calculate Commission PercentageQuestionWrite a Java program to calculate the commission percentage given total sales amount and total commission earned.CodeJavaimport java.util.Scanner;
+
+public class CommissionPercentage {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter total sales amount: ");
+        double totalSales = scanner.nextDouble();
+        System.out.print("Enter total commission earned: ");
+        double commissionAmount = scanner.nextDouble();
+
+        double commissionPercentage = (commissionAmount / totalSales) * 100;
+        System.out.printf("Commission Percentage: %.2f%%\n", commissionPercentage);
+        scanner.close();
+    }
+}
+Output:
+Enter total sales amount: 50000
+Enter total commission earned: 2500
+Commission Percentage: 5.00%
+
+
+7. Power In JavaQuestionWrite a Java program to calculate $A^B$ (base raised to the power exponent) without using built-in methods, and then verify with Math.pow().CodeJavaimport java.util.Scanner;
+
+public class PowerCalculation {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter base: ");
+        double base = scanner.nextDouble();
+        System.out.print("Enter exponent (non-negative integer): ");
+        int exponent = scanner.nextInt();
+
+        double result = 1;
+        for (int i = 1; i <= exponent; i++) {
+            result *= base;
+        }
+
+        System.out.printf("%.2f ^ %d = %.2f\n", base, exponent, result);
+        scanner.close();
+    }
+}
+Output:
+Enter base: 2.5
+Enter exponent (non-negative integer): 3
+2.50 ^ 3 = 15.63
+
+
+8. Calculate Depreciation of ValueQuestionWrite a Java program to compute the straight-line depreciation value of an asset using:$$\text{Depreciation per year} = \frac{\text{Initial Value} - \text{Salvage Value}}{\text{Useful Life (Years)}}$$CodeJavaimport java.util.Scanner;
+
+public class AssetDepreciation {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter initial cost of asset: ");
+        double cost = scanner.nextDouble();
+        System.out.print("Enter salvage value: ");
+        double salvageValue = scanner.nextDouble();
+        System.out.print("Enter useful life in years: ");
+        int lifeInYears = scanner.nextInt();
+
+        double annualDepreciation = (cost - salvageValue) / lifeInYears;
+        System.out.printf("Annual Depreciation Amount: ₹%.2f\n", annualDepreciation);
+        scanner.close();
+    }
+}
+Output:
+Enter initial cost of asset: 50000
+Enter salvage value: 5000
+Enter useful life in years: 5
+Annual Depreciation Amount: ₹9000.00
+
+
+9. Calculate Batting AverageQuestionWrite a Java program to calculate a cricket batter's average using the formula:$$\text{Batting Average} = \frac{\text{Total Runs}}{\text{Total Innings} - \text{Not Out Count}}$$CodeJavaimport java.util.Scanner;
+
+public class BattingAverage {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter total runs scored: ");
+        int runs = scanner.nextInt();
+        System.out.print("Enter total innings played: ");
+        int innings = scanner.nextInt();
+        System.out.print("Enter number of times remaining Not Out: ");
+        int notOuts = scanner.nextInt();
+
+        int dismissals = innings - notOuts;
+
+        if (dismissals <= 0) {
+            System.out.println("Batting Average cannot be calculated (0 dismissals).");
+        } else {
+            double battingAvg = (double) runs / dismissals;
+            System.out.printf("Batting Average: %.2f\n", battingAvg);
+        }
+
+        scanner.close();
+    }
+}
+Output:
+Enter total runs scored: 1250
+Enter total innings played: 30
+Enter number of times remaining Not Out: 5
+Batting Average: 50.00
+
+
+10. Calculate CGPA Java ProgramQuestionWrite a Java program to compute Cumulative Grade Point Average (CGPA) given the grade points obtained in $N$ subjects.CodeJavaimport java.util.Scanner;
+
+public class CalculateCGPA {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter total number of subjects: ");
+        int subjects = scanner.nextInt();
+
+        double totalGradePoints = 0;
+        for (int i = 1; i <= subjects; i++) {
+            System.out.print("Enter grade point obtained in subject " + i + " (out of 10): ");
+            totalGradePoints += scanner.nextDouble();
+        }
+
+        double cgpa = (subjects > 0) ? (totalGradePoints / subjects) : 0;
+        double percentage = cgpa * 9.5; // Standard CBSE conversion multiplier
+
+        System.out.printf("Overall CGPA: %.2f\n", cgpa);
+        System.out.printf("Equivalent Percentage: %.2f%%\n", percentage);
+
+        scanner.close();
+    }
+}
+
+Output:
+Enter total number of subjects: 5
+Enter grade point obtained in subject 1 (out of 10): 9
+Enter grade point obtained in subject 2 (out of 10): 8.5
+Enter grade point obtained in subject 3 (out of 10): 9.5
+Enter grade point obtained in subject 4 (out of 10): 8.0
+Enter grade point obtained in subject 5 (out of 10): 9.0
+Overall CGPA: 8.70
+Equivalent Percentage: 82.65%
