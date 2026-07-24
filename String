@@ -1,0 +1,697 @@
+1. Defanging an IP Address
+
+public class DefangIPaddr {
+    public static String defangIPaddr(String address) {
+        return address.replace(".", "[.]");
+    }
+
+    public static void main(String[] args) {
+        String address = "1.1.1.1";
+        System.out.println(defangIPaddr(address));
+    }
+}
+Output:
+1[.]1[.]1[.]1
+
+
+2. Shuffle String
+
+public class ShuffleString {
+    public static String restoreString(String s, int[] indices) {
+        char[] result = new char[s.length()];
+        for (int i = 0; i < s.length(); i++) {
+            result[indices[i]] = s.charAt(i);
+        }
+        return new String(result);
+    }
+
+    public static void main(String[] args) {
+        String s = "codeleet";
+        int[] indices = {4, 5, 6, 7, 0, 2, 1, 3};
+        System.out.println(restoreString(s, indices));
+    }
+}
+Output:
+leetcode
+
+
+3. Goal Parser Interpretation
+
+public class GoalParser {
+    public static String interpret(String command) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < command.length(); i++) {
+            if (command.charAt(i) == 'G') {
+                sb.append('G');
+            } else if (command.charAt(i) == '(') {
+                if (command.charAt(i + 1) == ')') {
+                    sb.append('o');
+                    i++;
+                } else {
+                    sb.append("al");
+                    i += 3;
+                }
+            }
+        }
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        String command = "G()(al)";
+        System.out.println(interpret(command));
+    }
+}
+Output:
+Goal
+
+
+4. Count Items Matching a Rule
+
+import java.util.List;
+
+public class CountMatches {
+    public static int countMatches(List<List<String>> items, String ruleKey, String ruleValue) {
+        int index = 0;
+        if (ruleKey.equals("color")) {
+            index = 1;
+        } else if (ruleKey.equals("name")) {
+            index = 2;
+        }
+
+        int count = 0;
+        for (List<String> item : items) {
+            if (item.get(index).equals(ruleValue)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        List<List<String>> items = List.of(
+            List.of("phone", "blue", "pixel"),
+            List.of("computer", "silver", "lenovo"),
+            List.of("phone", "gold", "iphone")
+        );
+        System.out.println(countMatches(items, "color", "silver"));
+    }
+}
+Output:
+1
+
+
+5. Sorting the Sentence
+
+public class SortSentence {
+    public static String sortSentence(String s) {
+        String[] words = s.split(" ");
+        String[] result = new String[words.length];
+
+        for (String word : words) {
+            int pos = word.charAt(word.length() - 1) - '0';
+            result[pos - 1] = word.substring(0, word.length() - 1);
+        }
+
+        return String.join(" ", result);
+    }
+
+    public static void main(String[] args) {
+        String s = "is2 sentence1 This3 a4";
+        System.out.println(sortSentence(s));
+    }
+}
+Output:
+This is a sentence
+
+
+6. Check If Two String Arrays are Equivalent
+
+public class ArrayStringsAreEqual {
+    public static boolean arrayStringsAreEqual(String[] word1, String[] word2) {
+        return String.join("", word1).equals(String.join("", word2));
+    }
+
+    public static void main(String[] args) {
+        String[] word1 = {"ab", "c"};
+        String[] word2 = {"a", "bc"};
+        System.out.println(arrayStringsAreEqual(word1, word2));
+    }
+}
+Output
+true
+
+
+7. To Lower Case
+
+public class ToLowerCase {
+    public static String toLowerCase(String s) {
+        char[] chars = s.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] >= 'A' && chars[i] <= 'Z') {
+                chars[i] = (char) (chars[i] + 32);
+            }
+        }
+        return new String(chars);
+    }
+
+    public static void main(String[] args) {
+        String s = "Hello";
+        System.out.println(toLowerCase(s));
+    }
+}
+Output:
+hello
+
+
+8. Determine if String Halves Are Alike
+
+import java.util.Set;
+
+public class HalvesAreAlike {
+    public static boolean halvesAreAlike(String s) {
+        Set<Character> vowels = Set.of('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U');
+        int n = s.length();
+        int count1 = 0, count2 = 0;
+
+        for (int i = 0; i < n / 2; i++) {
+            if (vowels.contains(s.charAt(i))) count1++;
+            if (vowels.contains(s.charAt(i + n / 2))) count2++;
+        }
+
+        return count1 == count2;
+    }
+
+    public static void main(String[] args) {
+        String s = "book";
+        System.out.println(halvesAreAlike(s));
+    }
+}
+Output:
+true
+
+
+9. Decrypt String from Alphabet to Integer Mapping
+
+public class DecryptString {
+    public static String freqAlphabets(String s) {
+        StringBuilder sb = new StringBuilder();
+        int i = s.length() - 1;
+
+        while (i >= 0) {
+            if (s.charAt(i) == '#') {
+                int val = Integer.parseInt(s.substring(i - 2, i));
+                sb.append((char) ('a' + val - 1));
+                i -= 3;
+            } else {
+                int val = s.charAt(i) - '0';
+                sb.append((char) ('a' + val - 1));
+                i--;
+            }
+        }
+
+        return sb.reverse().toString();
+    }
+
+    public static void main(String[] args) {
+        String s = "10#11#12";
+        System.out.println(freqAlphabets(s));
+    }
+}
+Output
+jkab
+
+
+10. Number of Strings That Appear as Substrings in Word
+
+public class NumOfStrings {
+    public static int numOfStrings(String[] patterns, String word) {
+        int count = 0;
+        for (String pattern : patterns) {
+            if (word.contains(pattern)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        String[] patterns = {"a", "abc", "bc", "d"};
+        String word = "abc";
+        System.out.println(numOfStrings(patterns, word));
+    }
+}
+Output
+3
+
+
+11. Robot Return to Origin
+
+public class JudgeCircle {
+    public static boolean judgeCircle(String moves) {
+        int x = 0, y = 0;
+        for (char move : moves.toCharArray()) {
+            if (move == 'U') y++;
+            else if (move == 'D') y--;
+            else if (move == 'R') x++;
+            else if (move == 'L') x--;
+        }
+        return x == 0 && y == 0;
+    }
+
+    public static void main(String[] args) {
+        String moves = "UD";
+        System.out.println(judgeCircle(moves));
+    }
+}
+Output
+true
+
+
+12. Reverse Words in a String III
+
+public class ReverseWords {
+    public static String reverseWords(String s) {
+        String[] words = s.split(" ");
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < words.length; i++) {
+            StringBuilder sb = new StringBuilder(words[i]);
+            result.append(sb.reverse());
+            if (i < words.length - 1) {
+                result.append(" ");
+            }
+        }
+
+        return result.toString();
+    }
+
+    public static void main(String[] args) {
+        String s = "Let's take LeetCode contest";
+        System.out.println(reverseWords(s));
+    }
+}
+Output
+s'teL ekat edoCteeL tsetnoc
+
+
+13. Jump Game VII
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class JumpGameVII {
+    public static boolean canReach(String s, int minJump, int maxJump) {
+        if (s.charAt(s.length() - 1) != '0') return false;
+
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(0);
+        int farthest = 0;
+
+        while (!queue.isEmpty()) {
+            int idx = queue.poll();
+            int start = Math.max(idx + minJump, farthest + 1);
+            int end = Math.min(idx + maxJump, s.length() - 1);
+
+            for (int j = start; j <= end; j++) {
+                if (s.charAt(j) == '0') {
+                    if (j == s.length() - 1) return true;
+                    queue.offer(j);
+                }
+            }
+            farthest = Math.max(farthest, idx + maxJump);
+        }
+
+        return false;
+    }
+
+    public static void main(String[] args) {
+        String s = "00110010";
+        System.out.println(canReach(s, 2, 4));
+    }
+}
+Output
+true
+
+
+14. Split Two Strings to Make Palindrome
+
+public class SplitTwoStrings {
+    public static boolean checkPalindromeFormation(String a, String b) {
+        return check(a, b) || check(b, a);
+    }
+
+    private static boolean check(String a, String b) {
+        int left = 0, right = a.length() - 1;
+        while (left < right && a.charAt(left) == b.charAt(right)) {
+            left++;
+            right--;
+        }
+        return isPalindrome(a, left, right) || isPalindrome(b, left, right);
+    }
+
+    private static boolean isPalindrome(String s, int left, int right) {
+        while (left < right) {
+            if (s.charAt(left) != s.charAt(right)) return false;
+            left++;
+            right--;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        String a = "xabcba", b = "abcba";
+        System.out.println(checkPalindromeFormation("x", "y"));
+    }
+}
+Output:
+true
+
+
+15. Number of Ways to Split a String
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class NumberOfWaysToSplit {
+    public static int numWays(String s) {
+        int MOD = 1000000007;
+        List<Integer> onesIndices = new ArrayList<>();
+        int n = s.length();
+
+        for (int i = 0; i < n; i++) {
+            if (s.charAt(i) == '1') {
+                onesIndices.add(i);
+            }
+        }
+
+        int countOnes = onesIndices.size();
+
+        if (countOnes == 0) {
+            long ways = (long) (n - 1) * (n - 2) / 2;
+            return (int) (ways % MOD);
+        }
+
+        if (countOnes % 3 != 0) {
+            return 0;
+        }
+
+        int k = countOnes / 3;
+        long waysFirstSplit = onesIndices.get(k) - onesIndices.get(k - 1);
+        long waysSecondSplit = onesIndices.get(2 * k) - onesIndices.get(2 * k - 1);
+
+        return (int) ((waysFirstSplit * waysSecondSplit) % MOD);
+    }
+
+    public static void main(String[] args) {
+        String s = "10101";
+        System.out.println(numWays(s));
+    }
+}
+Output:
+4
+
+
+16. Sentence Similarity III
+
+public class SentenceSimilarityIII {
+    public static boolean areSentencesSimilar(String sentence1, String sentence2) {
+        String[] words1 = sentence1.split(" ");
+        String[] words2 = sentence2.split(" ");
+
+        int i = 0, j1 = words1.length - 1, j2 = words2.length - 1;
+
+        while (i < words1.length && i < words2.length && words1[i].equals(words2[i])) {
+            i++;
+        }
+
+        while (j1 >= i && j2 >= i && words1[j1].equals(words2[j2])) {
+            j1--;
+            j2--;
+        }
+
+        return j1 < i || j2 < i;
+    }
+
+    public static void main(String[] args) {
+        String sentence1 = "My name is Haley", sentence2 = "My Haley";
+        System.out.println(areSentencesSimilar(sentence1, sentence2));
+    }
+}
+Output
+true
+
+
+17. Repeated String Match
+
+public class RepeatedStringMatch {
+    public static int repeatedStringMatch(String a, String b) {
+        StringBuilder sb = new StringBuilder();
+        int count = 0;
+
+        while (sb.length() < b.length()) {
+            sb.append(a);
+            count++;
+        }
+
+        if (sb.toString().contains(b)) return count;
+        if (sb.append(a).toString().contains(b)) return count + 1;
+
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        String a = "abcd", b = "cdabcdab";
+        System.out.println(repeatedStringMatch(a, b));
+    }
+}
+Output
+3
+
+
+18. Next Greater Element III
+
+public class NextGreaterElementIII {
+    public static int nextGreaterElement(int n) {
+        char[] digits = String.valueOf(n).toCharArray();
+        int len = digits.length;
+        int i = len - 2;
+
+        while (i >= 0 && digits[i] >= digits[i + 1]) {
+            i--;
+        }
+
+        if (i < 0) return -1;
+
+        int j = len - 1;
+        while (digits[j] <= digits[i]) {
+            j--;
+        }
+
+        swap(digits, i, j);
+        reverse(digits, i + 1, len - 1);
+
+        try {
+            return Integer.parseInt(new String(digits));
+        } catch (NumberFormatException e) {
+            return -1;
+        }
+    }
+
+    private static void swap(char[] a, int i, int j) {
+        char temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    }
+
+    private static void reverse(char[] a, int start, int end) {
+        while (start < end) {
+            swap(a, start++, end--);
+        }
+    }
+
+    public static void main(String[] args) {
+        int n = 12;
+        System.out.println(nextGreaterElement(n));
+    }
+}
+Output
+21
+
+
+19. Maximum Number of Removable Characters
+
+public class MaximumRemovableCharacters {
+    public static int maximumRemovals(String s, String p, int[] removable) {
+        int left = 0, right = removable.length;
+        int result = 0;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (isSubsequence(s, p, removable, mid)) {
+                result = mid;
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        return result;
+    }
+
+    private static boolean isSubsequence(String s, String p, int[] removable, int k) {
+        boolean[] removed = new boolean[s.length()];
+        for (int i = 0; i < k; i++) {
+            removed[removable[i]] = true;
+        }
+
+        int pIdx = 0;
+        for (int sIdx = 0; sIdx < s.length(); sIdx++) {
+            if (removed[sIdx]) continue;
+            if (s.charAt(sIdx) == p.charAt(pIdx)) {
+                pIdx++;
+                if (pIdx == p.length()) return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static void main(String[] args) {
+        String s = "abcacb", p = "ab";
+        int[] removable = {3, 1, 0};
+        System.out.println(maximumRemovals(s, p, removable));
+    }
+}
+Output
+2
+
+
+20. Swap Adjacent in LR String
+
+public class SwapAdjacentInLRString {
+    public static boolean canTransform(String start, String end) {
+        if (!start.replace("X", "").equals(end.replace("X", ""))) {
+            return false;
+        }
+
+        int p1 = 0, p2 = 0;
+        int n = start.length();
+
+        while (p1 < n && p2 < n) {
+            while (p1 < n && start.charAt(p1) == 'X') p1++;
+            while (p2 < n && end.charAt(p2) == 'X') p2++;
+
+            if (p1 == n && p2 == n) return true;
+            if (p1 == n || p2 == n) return false;
+
+            if (start.charAt(p1) != end.charAt(p2)) return false;
+
+            if (start.charAt(p1) == 'L' && p1 < p2) return false;
+            if (start.charAt(p1) == 'R' && p1 > p2) return false;
+
+            p1++;
+            p2++;
+        }
+
+        return true;
+    }
+
+    public static void main(String[] args) {
+        String start = "RXXLRXRXL", end = "XRLXXRRLX";
+        System.out.println(canTransform(start, end));
+    }
+}
+Output
+true
+
+
+21. Multiply Strings
+
+public class MultiplyStrings {
+    public static String multiply(String num1, String num2) {
+        if (num1.equals("0") || num2.equals("0")) return "0";
+
+        int m = num1.length(), n = num2.length();
+        int[] pos = new int[m + n];
+
+        for (int i = m - 1; i >= 0; i--) {
+            for (int j = n - 1; j >= 0; j--) {
+                int mul = (num1.charAt(i) - '0') * (num2.charAt(j) - '0');
+                int p1 = i + j, p2 = i + j + 1;
+                int sum = mul + pos[p2];
+
+                pos[p1] += sum / 10;
+                pos[p2] = sum % 10;
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (int p : pos) {
+            if (!(sb.length() == 0 && p == 0)) {
+                sb.append(p);
+            }
+        }
+
+        return sb.length() == 0 ? "0" : sb.toString();
+    }
+
+    public static void main(String[] args) {
+        String num1 = "123", num2 = "456";
+        System.out.println(multiply(num1, num2));
+    }
+}
+Output
+56088
+
+
+22. Basic Calculator II
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+public class BasicCalculatorII {
+    public static int calculate(String s) {
+        if (s == null || s.length() == 0) return 0;
+
+        Deque<Integer> stack = new ArrayDeque<>();
+        int currentNumber = 0;
+        char operation = '+';
+
+        for (int i = 0; i < s.length(); i++) {
+            char currentChar = s.charAt(i);
+
+            if (Character.isDigit(currentChar)) {
+                currentNumber = (currentNumber * 10) + (currentChar - '0');
+            }
+
+            if (!Character.isDigit(currentChar) && !Character.isWhitespace(currentChar) || i == s.length() - 1) {
+                if (operation == '-') {
+                    stack.push(-currentNumber);
+                } else if (operation == '+') {
+                    stack.push(currentNumber);
+                } else if (operation == '*') {
+                    stack.push(stack.pop() * currentNumber);
+                } else if (operation == '/') {
+                    stack.push(stack.pop() / currentNumber);
+                }
+                operation = currentChar;
+                currentNumber = 0;
+            }
+        }
+
+        int result = 0;
+        while (!stack.isEmpty()) {
+            result += stack.pop();
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        String s = "3+2*2";
+        System.out.println(calculate(s));
+    }
+}
+
+Output:
+7
