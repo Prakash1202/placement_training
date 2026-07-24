@@ -1,0 +1,341 @@
+1. Add Binary
+
+public class AddBinary {
+    public static String addBinary(String a, String b) {
+        StringBuilder sb = new StringBuilder();
+        int i = a.length() - 1, j = b.length() - 1, carry = 0;
+
+        while (i >= 0 || j >= 0 || carry == 1) {
+            int sum = carry;
+            if (i >= 0) sum += a.charAt(i--) - '0';
+            if (j >= 0) sum += b.charAt(j--) - '0';
+            sb.append(sum % 2);
+            carry = sum / 2;
+        }
+
+        return sb.reverse().toString();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(addBinary("11", "1"));
+    }
+}
+Output:
+100
+
+
+2. Single Number
+
+public class SingleNumber {
+    public static int singleNumber(int[] nums) {
+        int result = 0;
+        for (int num : nums) {
+            result ^= num;
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {4, 1, 2, 1, 2};
+        System.out.println(singleNumber(nums));
+    }
+}
+Output:
+4
+
+
+3. Reverse Bits
+
+public class ReverseBits {
+    public static int reverseBits(int n) {
+        int result = 0;
+        for (int i = 0; i < 32; i++) {
+            result = (result << 1) | (n & 1);
+            n >>>= 1;
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int n = 43261596; // 00000010100101000001111010011100 in 32-bit binary
+        System.out.println(reverseBits(n));
+    }
+}
+Output:
+964176192
+
+
+4. Number of 1 Bits
+
+public class NumberOf1Bits {
+    public static int hammingWeight(int n) {
+        int count = 0;
+        while (n != 0) {
+            n &= (n - 1); // Clears the lowest set bit
+            count++;
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(hammingWeight(11)); // 11 in binary is 1011
+    }
+}
+Output:
+3
+
+
+5. Counting Bits
+
+import java.util.Arrays;
+
+public class CountingBits {
+    public static int[] countBits(int n) {
+        int[] result = new int[n + 1];
+        for (int i = 1; i <= n; i++) {
+            result[i] = result[i >> 1] + (i & 1);
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Arrays.toString(countBits(5)));
+    }
+}
+Output
+0, 1, 1, 2, 1, 2
+
+
+6. Binary Watch
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class BinaryWatch {
+    public static List<String> readBinaryWatch(int turnedOn) {
+        List<String> times = new ArrayList<>();
+        for (int h = 0; h < 12; h++) {
+            for (int m = 0; m < 60; m++) {
+                if (Integer.bitCount(h) + Integer.bitCount(m) == turnedOn) {
+                    times.add(String.format("%d:%02d", h, m));
+                }
+            }
+        }
+        return times;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(readBinaryWatch(1));
+    }
+}
+Output:
+0:01, 0:02, 0:04, 0:08, 0:16, 0:32, 1:00, 2:00, 4:00, 8:00
+
+
+7. Hamming Distance
+
+public class HammingDistance {
+    public static int hammingDistance(int x, int y) {
+        return Integer.bitCount(x ^ y);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(hammingDistance(1, 4));
+    }
+}
+Output:
+2
+
+
+8. Number Complement
+
+public class NumberComplement {
+    public static int findComplement(int num) {
+        int mask = (Integer.highestOneBit(num) << 1) - 1;
+        return num ^ mask;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(findComplement(5)); // 5 in binary is 101, complement is 010 (2)
+    }
+}
+Output
+2
+
+
+9. Set Mismatch
+
+import java.util.Arrays;
+
+public class SetMismatch {
+    public static int[] findErrorNums(int[] nums) {
+        int dup = -1, missing = -1;
+        for (int num : nums) {
+            int idx = Math.abs(num) - 1;
+            if (nums[idx] < 0) {
+                dup = Math.abs(num);
+            } else {
+                nums[idx] *= -1;
+            }
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > 0) {
+                missing = i + 1;
+                break;
+            }
+        }
+
+        return new int[]{dup, missing};
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 2, 4};
+        System.out.println(Arrays.toString(findErrorNums(nums)));
+    }
+}
+Output
+[2, 3]
+
+
+10. Binary Number with Alternating Bits
+
+public class AlternatingBits {
+    public static boolean hasAlternatingBits(int n) {
+        int x = n ^ (n >> 1);
+        return (x & (x + 1)) == 0;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(hasAlternatingBits(5)); // 5 is 101 in binary
+    }
+}
+Output:
+true
+
+
+11. Prime Number of Set Bits in Binary Representation
+
+import java.util.Set;
+
+public class PrimeSetBits {
+    public static int countPrimeSetBits(int left, int right) {
+        Set<Integer> primes = Set.of(2, 3, 5, 7, 11, 13, 17, 19);
+        int count = 0;
+
+        for (int i = left; i <= right; i++) {
+            if (primes.contains(Integer.bitCount(i))) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(countPrimeSetBits(6, 10));
+    }
+}
+Output:
+4
+
+
+12. Binary Gap
+
+public class BinaryGap {
+    public static int binaryGap(int n) {
+        int last = -1, maxGap = 0;
+
+        for (int i = 0; i < 32; i++) {
+            if (((n >> i) & 1) == 1) {
+                if (last != -1) {
+                    maxGap = Math.max(maxGap, i - last);
+                }
+                last = i;
+            }
+        }
+
+        return maxGap;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(binaryGap(22)); // 22 is 10110 in binary
+    }
+}
+Output:
+2
+
+
+13. Number of Steps to Reduce a Number to Zero
+
+public class NumberOfSteps {
+    public static int numberOfSteps(int num) {
+        if (num == 0) return 0;
+        int steps = 0;
+
+        while (num > 0) {
+            if ((num & 1) == 0) {
+                num >>= 1;
+            } else {
+                num--;
+            }
+            steps++;
+        }
+
+        return steps;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(numberOfSteps(14));
+    }
+}
+Output:
+6
+
+
+14. Sort Integers by The Number of 1 Bits
+
+import java.util.Arrays;
+
+public class SortByBits {
+    public static int[] sortByBits(int[] arr) {
+        Integer[] boxed = Arrays.stream(arr).boxed().toArray(Integer[]::new);
+
+        Arrays.sort(boxed, (a, b) -> {
+            int countA = Integer.bitCount(a);
+            int countB = Integer.bitCount(b);
+            if (countA == countB) {
+                return Integer.compare(a, b);
+            }
+            return Integer.compare(countA, countB);
+        });
+
+        return Arrays.stream(boxed).mapToInt(Integer::intValue).toArray();
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {0, 1, 2, 3, 4, 5, 6, 7, 8};
+        System.out.println(Arrays.toString(sortByBits(arr)));
+    }
+}
+Output:
+[0, 1, 2, 4, 8, 3, 5, 6, 7]
+
+
+15. XOR Operation in an Array
+
+public class XorOperation {
+    public static int xorOperation(int n, int start) {
+        int result = 0;
+        for (int i = 0; i < n; i++) {
+            result ^= (start + 2 * i);
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(xorOperation(5, 0));
+    }
+}
+Output:
+8
