@@ -1,0 +1,248 @@
+1. Roman to Integer
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class RomanToInteger {
+    public static int romanToInt(String s) {
+        Map<Character, Integer> map = new HashMap<>();
+        map.put('I', 1);
+        map.put('V', 5);
+        map.put('X', 10);
+        map.put('L', 50);
+        map.put('C', 100);
+        map.put('D', 500);
+        map.put('M', 1000);
+
+        int total = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int current = map.get(s.charAt(i));
+            if (i + 1 < s.length() && map.get(s.charAt(i + 1)) > current) {
+                total -= current;
+            } else {
+                total += current;
+            }
+        }
+        return total;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(romanToInt("MCMXCIV"));
+    }
+}
+Output:
+1994
+
+
+2. Happy Number
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class HappyNumber {
+    public static boolean isHappy(int n) {
+        Set<Integer> seen = new HashSet<>();
+        while (n != 1 && !seen.contains(n)) {
+            seen.add(n);
+            int sum = 0;
+            while (n > 0) {
+                int digit = n % 10;
+                sum += digit * digit;
+                n /= 10;
+            }
+            n = sum;
+        }
+        return n == 1;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isHappy(19));
+    }
+}
+Output:
+true
+
+
+3. Armstrong Numbers
+
+public class ArmstrongNumber {
+    public static boolean isArmstrong(int n) {
+        int original = n;
+        int sum = 0;
+        int digits = String.valueOf(n).length();
+
+        while (n > 0) {
+            int digit = n % 10;
+            sum += Math.pow(digit, digits);
+            n /= 10;
+        }
+        return sum == original;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isArmstrong(153));
+    }
+}
+Output:
+true
+
+
+4. Power of Four
+
+public class PowerOfFour {
+    public static boolean isPowerOfFour(int n) {
+        // n > 0, power of two check (only one bit set), and bit is at an even position
+        return n > 0 && (n & (n - 1)) == 0 && (n & 0x55555555) != 0;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isPowerOfFour(16));
+    }
+}
+Output:
+true
+
+
+5. Factorial
+
+public class Factorial {
+    public static long factorial(int n) {
+        if (n <= 1) return 1;
+        return n * factorial(n - 1);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(factorial(5));
+    }
+}
+Output
+120
+
+
+6. Excel Sheet Column Title
+
+public class ExcelColumnTitle {
+    public static String convertToTitle(int columnNumber) {
+        StringBuilder sb = new StringBuilder();
+        while (columnNumber > 0) {
+            columnNumber--; // Adjust for 1-based indexing
+            sb.append((char) ('A' + (columnNumber % 26)));
+            columnNumber /= 26;
+        }
+        return sb.reverse().toString();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(convertToTitle(28));
+    }
+}
+Output:
+AB
+
+
+7. Maximum Product of Three Numbers
+
+import java.util.Arrays;
+
+public class MaxProductOfThree {
+    public static int maximumProduct(int[] nums) {
+        Arrays.sort(nums);
+        int n = nums.length;
+        // Product can be max of either top 3 positives OR bottom 2 negatives * top positive
+        int prod1 = nums[n - 1] * nums[n - 2] * nums[n - 3];
+        int prod2 = nums[0] * nums[1] * nums[n - 1];
+        return Math.max(prod1, prod2);
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {-10, -10, 5, 2};
+        System.out.println(maximumProduct(nums));
+    }
+}
+Output:
+200
+
+
+8. Climbing Stairs
+
+public class ClimbingStairs {
+    public static int climbStairs(int n) {
+        if (n <= 2) return n;
+        int first = 1, second = 2;
+        for (int i = 3; i <= n; i++) {
+            int third = first + second;
+            first = second;
+            second = third;
+        }
+        return second;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(climbStairs(5));
+    }
+}
+Output:
+8
+
+
+9. Self Dividing Numbers
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class SelfDividingNumbers {
+    public static List<Integer> selfDividingNumbers(int left, int right) {
+        List<Integer> result = new ArrayList<>();
+        for (int num = left; num <= right; num++) {
+            if (isSelfDividing(num)) {
+                result.add(num);
+            }
+        }
+        return result;
+    }
+
+    private static boolean isSelfDividing(int num) {
+        int temp = num;
+        while (temp > 0) {
+            int digit = temp % 10;
+            if (digit == 0 || num % digit != 0) {
+                return false;
+            }
+            temp /= 10;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(selfDividingNumbers(1, 22));
+    }
+}
+Output:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]
+
+
+10. Add Binary
+
+public class AddBinary {
+    public static String addBinary(String a, String b) {
+        StringBuilder sb = new StringBuilder();
+        int i = a.length() - 1, j = b.length() - 1, carry = 0;
+
+        while (i >= 0 || j >= 0 || carry == 1) {
+            int sum = carry;
+            if (i >= 0) sum += a.charAt(i--) - '0';
+            if (j >= 0) sum += b.charAt(j--) - '0';
+            sb.append(sum % 2);
+            carry = sum / 2;
+        }
+
+        return sb.reverse().toString();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(addBinary("1010", "1011"));
+    }
+}
+
+Output:
+10101
